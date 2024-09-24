@@ -1,57 +1,47 @@
 package com.principal.alomaster.config;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.principal.alomaster.services.CustomUserDetailsService;
+import com.principal.alomaster.enums.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService customUserDetailsService;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/registro").permitAll()
-                .requestMatchers("/invitado/**").hasRole("GUEST")
-                .requestMatchers("/vendedor/**").hasRole("WORKER")
-                .requestMatchers("/cliente/**").hasRole("CLIENT")
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests((requests) -> requests
+                .requestMatchers("/auth/register/**", "/guest/**", "/").permitAll()
+                .requestMatchers("/worker/**").hasRole(Role.WORKER.name())
+                .requestMatchers("/client/**").hasRole(Role.CLIENT.name())
                 .anyRequest().authenticated()
-        );
-
-        http.formLogin(
-                form -> form
-                        .loginPage("/login")
-                        .permitAll()
-                        .defaultSuccessUrl("/registro")
-                        .failureUrl("/login?error")
-        );
-        http.httpBasic(
-                httpBasic -> httpBasic
-                        .realmName("Alomaster")
-                        .authenticationEntryPoint((request, response, authException) -> response.sendRedirect("/login?error"))
-        );
-        http.csrf( csrf -> csrf.disable());
+            )
+            .formLogin(withDefaults())
+            .logout((logout) -> logout.permitAll());
 
         return http.build();
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        // Implementación de UserDetailsService
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    public UserDetailsService userDetailsService() {
+        return customUserDetailsService;
     }
 }

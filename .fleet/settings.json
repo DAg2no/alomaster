@@ -1,0 +1,13 @@
+{
+    
+    "plugins": [
+        {
+            "type": "add",
+            "pluginName": "com.github.catppuccin.fleet"
+        },
+        {
+            "type": "add",
+            "pluginName": "fleet.themeDesigner"
+        }
+    ]
+}

@@ -5,15 +5,31 @@ import com.principal.alomaster.repositories.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WorkerService {
 
     @Autowired
-    private WorkerRepository maestroRepository;
+    private WorkerRepository workerRepository;
 
-    public Worker crearMaestro(Worker maestro) {
-        return maestroRepository.save(maestro);
+    public List<Worker> getAllWorkers() {
+        return workerRepository.findAll();
     }
 
-    // Métodos GET, PUT, DELETE
+    public Worker getWorkerById(Long id) {
+        return workerRepository.findById(id).orElse(null);
+    }
+
+    public Worker createWorker(Worker worker) {
+        return workerRepository.save(worker);
+    }
+
+    public Worker updateWorker(Worker worker) {
+        return workerRepository.save(worker);
+    }
+
+    public void deleteWorker(Long id) {
+        workerRepository.deleteById(id);
+    }
 }

@@ -12,23 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "Client")
-public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String nombreCompleto;
-
-    private byte[] fotoActualizada;
-
-    private String rut;
-
-    private String dirección;
-
-    private String númeroTeléfono;
-
-    private String correo;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Client extends User {
 }

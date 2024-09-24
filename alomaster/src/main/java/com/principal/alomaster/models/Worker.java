@@ -12,22 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "Worker")
-public class Worker {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nombreCompleto;
-
-    private byte[] fotoActualizada;
-
-    private String rut;
-
-    private String dirección;
-
-    private String númeroTeléfono;
-
-    private String correo;
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Worker extends User {
 
     private byte[] fotoCarnetFrontal;
 
@@ -36,7 +22,4 @@ public class Worker {
     private byte[] certificadoAntecedentes;
 
     private byte[] certificaciónTrabajoMaestranza;
-
-    @Enumerated(EnumType.STRING)
-    private Role role;
 }

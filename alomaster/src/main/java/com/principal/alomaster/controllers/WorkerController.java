@@ -14,36 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/worker")
+@RequestMapping("/worker/home")
 public class WorkerController {
     @Autowired
     private WorkerService workerService;
 
+
     @GetMapping
-    public String getAllWorkers(Model model) {
-        List<Worker> workers = workerService.getAllWorkers();
-        model.addAttribute("workers", workers);
-        return "worker/list";
+    public String homePage(Model model) {
+        return "worker/home";
     }
 
-    @GetMapping("/new")
-    public String newWorker(Model model) {
-        model.addAttribute("worker", new Worker());
-        return "worker/form";
-    }
-
-    @PostMapping
-    public String saveWorker(@ModelAttribute Worker worker) {
-        workerService.saveWorker(worker);
-        return "redirect:/worker";
-    }
-
-    @GetMapping("/{id}")
-    public String getWorkerById(@PathVariable Long id, Model model) {
-        Worker worker = workerService.getWorkerById(id);
-        model.addAttribute("worker", worker);
-        return "worker/detail";
-    }
 
     @GetMapping("/{id}/edit")
     public String editWorker(@PathVariable Long id, Model model) {

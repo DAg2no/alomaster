@@ -1,6 +1,7 @@
 package com.principal.alomaster.models;
 
 
+import com.principal.alomaster.annotations.PasswordMatches;
 import com.principal.alomaster.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -18,6 +19,7 @@ import java.util.Collections;
 @Entity(name = "UserCustom")
 @Table(name = "User", uniqueConstraints = @UniqueConstraint(columnNames = "rut"))
 @Inheritance(strategy = InheritanceType.JOINED)
+@PasswordMatches
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +50,17 @@ public class User implements UserDetails {
 
     @NotBlank(message = "Contraseña es requerida")
     private String password;
+
+    @Transient
+    private String passwordConfirm;
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
 
     @NotBlank(message = "Nombre de usuario es requerido")
     private String username;

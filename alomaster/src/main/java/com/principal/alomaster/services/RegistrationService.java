@@ -12,7 +12,6 @@ public class RegistrationService {
     private UserRepository userRepository;
 
 
-   
     @Autowired
     private PasswordEncoder passwordEncoder;
 

@@ -14,36 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/client")
+@RequestMapping("/client/home")
 public class ClientController {
     @Autowired
     private ClientService clientService;
 
+
     @GetMapping
-    public String getAllClients(Model model) {
-        List<Client> clients = clientService.getAllClients();
-        model.addAttribute("clients", clients);
-        return "client/list";
+    public String homePage(Model model) {
+        return "client/home";
     }
 
-    @GetMapping("/new")
-    public String newClient(Model model) {
-        model.addAttribute("client", new Client());
-        return "client/form";
-    }
-
-    @PostMapping
-    public String saveClient(@ModelAttribute Client client) {
-        clientService.saveClient(client);
-        return "redirect:/client";
-    }
-
-    @GetMapping("/{id}")
-    public String getClientById(@PathVariable Long id, Model model) {
-        Client client = clientService.getClientById(id);
-        model.addAttribute("client", client);
-        return "client/detail";
-    }
 
     @GetMapping("/{id}/edit")
     public String editClient(@PathVariable Long id, Model model) {

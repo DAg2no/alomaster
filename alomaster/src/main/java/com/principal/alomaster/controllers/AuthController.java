@@ -19,7 +19,7 @@ public class AuthController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/register")
+    @GetMapping("/login")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
         return "auth";
@@ -32,32 +32,6 @@ public class AuthController {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "redirect:/auth/success";
-    }
-
-    @PostMapping("/login")
-    public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
-        return userRepository.findByUsername(username).map(user -> {
-            if (passwordEncoder.matches(password, user.getPassword())) {
-                if (user.getRole().equals(Role.WORKER)) {
-                    return "redirect:/worker/home";
-                } else if (user.getRole().equals(Role.CLIENT)) {
-                    return "redirect:/client/home";
-                } else {
-                    return "redirect:/auth";
-                }
-            } else {
-                model.addAttribute("error", "Incorrect username or password"); // Preferably localize this message
-                return "auth";
-            }
-        }).orElseGet(() -> {
-            model.addAttribute("error", "Incorrect username or password"); // Preferably localize this message
-            return "auth";
-        });
-    }
-
-    @GetMapping("/success")
-    public String registrationSuccess() {
-        return "register-success";
+        return "redirect:/auth/login";
     }
 }

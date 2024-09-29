@@ -1,0 +1,298 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #426DC2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+img {
+    display: flex;
+    flex-direction: row;
+    height: 5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+#busqueda {
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 600px;
+}
+
+header nav {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: right;
+
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #7791cf;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CODIGO DE LA VENTANA MODAL, PEDIR AYUDA PARA QUE FUNCIONE COMO SE ESPERA*/
+.modal {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    transition: background-color ease-in-out 1s;
+}
+.shown {
+    display: flex;
+}
+.display {
+    height: 18em;
+    width: 13em;
+    padding: 1em;
+    display: inline-block;
+    position: relative;
+    top: 17.5em;
+    left: 11.5em;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-size-adjust: small;
+    background-color: #426DC2;
+    border: 10px solid white;
+}
+form {
+    background-color: #426DC2;
+}
+h2 {
+    padding: 0;
+}
+.hidden {
+    right: -100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+a:hover {
+    text-decoration: underline;
+    color: #bae7ff;
+}
+
+
+main {
+    background-color: #94e4ff;
+    margin: 0px;
+    display: flex;
+
+}
+
+h2 {
+    text-decoration: underline white;
+    font-weight: 900;
+    text-decoration-thickness: 3px;
+
+}
+.izquierda {
+    display: flex;
+    flex: 1;
+    margin: 10px;
+
+    padding-left: 20px;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    color: #3e484d;
+    box-shadow: white 2px 2px 0px 10px;;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+
+
+}
+
+.logOn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    font-weight: bolder;
+    color: #3e484d;
+
+}
+
+.regmaestro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #3e484d;
+    box-shadow: white 2px 2px 0px 10px;;
+    border-radius: 1px;
+    padding: 10px;
+    font-weight: bolder;
+
+
+}
+
+#boton1 {
+    border: none;
+    background-color: #94e4ff;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    margin-top: -10px;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+
+}
+.boton:hover {
+    cursor: pointer;
+}
+.derecha {
+    flex: 3;
+    margin: 20px;
+
+    color: #3e484d;
+    box-shadow: white 2px 2px 0px 10px;;
+    border-radius: 1px;
+    padding: 10px;
+    font-weight: bolder;
+    margin-right: 50px;
+
+}
+
+.registro {
+    display: flex;
+    flex-direction: column;
+
+
+}
+.datos {
+
+    width: 80%;
+}
+.p {
+    color: #3e484d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+
+
+}
+
+.h2 {
+    color: #3e484d;;
+}
+
+
+.section-contact {
+    background-color: #97dbff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.section-contact a {
+    font-size: 1em;
+    margin: 0 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+
+}
+
+a:hover {
+    text-decoration: underline;
+    color: white;
+
+}
+
+.rights {
+    font-size: 12px;
+}
+@media only screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #busqueda {
+        width: 200px;
+        flex-wrap: wrap;
+    }
+    .menu {
+        flex-direction: column;
+    }
+    .derecha {
+        margin-left: 50px;
+    }
+    .izquierda {
+        margin: 20px 50px 10px 30px;
+        width: auto;
+    }
+
+    .login {
+        display: flex;
+        width: auto;
+    }
+}

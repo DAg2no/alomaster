@@ -9,5 +9,4 @@ import lombok.*;
 @Table(name = "Client")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Client extends User {
-    // no additional fields for Client
 }

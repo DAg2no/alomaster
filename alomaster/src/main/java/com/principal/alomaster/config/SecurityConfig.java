@@ -37,11 +37,16 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**", "/home").permitAll()
+                .requestMatchers("/client/**").hasAuthority("CLIENT")
+                .requestMatchers("/worker/**").hasAuthority("WORKER")
+                .requestMatchers("/guest").hasAuthority("GUEST")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/process-login")
+                .usernameParameter("email")
+                .passwordParameter("password")
                 .defaultSuccessUrl("/home", true)
                 .failureUrl("/auth/login?error=true")
                 .permitAll()

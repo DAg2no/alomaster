@@ -1,7 +1,6 @@
 package com.principal.alomaster.models;
 
 
-import com.principal.alomaster.annotations.PasswordMatches;
 import com.principal.alomaster.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -16,10 +15,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 
-@Entity(name = "UserCustom")
+@Entity
 @Table(name = "User", uniqueConstraints = @UniqueConstraint(columnNames = "rut"))
 @Inheritance(strategy = InheritanceType.JOINED)
-@PasswordMatches
+
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,10 +41,9 @@ public class User implements UserDetails {
 
     @Email(message = "Correo electrónico no es válido")
     @NotBlank(message = "Correo electrónico es requerido")
-    private String correo;
+    private String email;
 
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "Rol es requerido")
     private Role role;
 
     @NotBlank(message = "Contraseña es requerida")
@@ -62,8 +60,6 @@ public class User implements UserDetails {
         this.passwordConfirm = passwordConfirm;
     }
 
-    @NotBlank(message = "Nombre de usuario es requerido")
-    private String username;
 
     public Long getId() {
         return id;
@@ -113,12 +109,12 @@ public class User implements UserDetails {
         this.numeroTelefono = numeroTelefono;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Role getRole() {
@@ -133,29 +129,26 @@ public class User implements UserDetails {
         return password;
     }
 
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public User(Long id, String nombreCompleto, byte[] fotoActualizada, String rut, String direccion, String numeroTelefono, String correo, Role role, String password, String username) {
+    public User(Long id, String nombreCompleto, byte[] fotoActualizada, String rut, String direccion, String numeroTelefono, String email, Role role, String password) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.fotoActualizada = fotoActualizada;
         this.rut = rut;
         this.direccion = direccion;
         this.numeroTelefono = numeroTelefono;
-        this.correo = correo;
+        this.email = email;
         this.role = role;
         this.password = password;
-        this.username = username;
     }
 
     public User() {

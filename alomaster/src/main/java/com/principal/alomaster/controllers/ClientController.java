@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/client/home")
+@RequestMapping("/client")
 public class ClientController {
     @Autowired
     private ClientService clientService;
 
 
-    @GetMapping
+    @GetMapping(value = ("/home"))
     public String homePage(Model model) {
-        return "client/home";
+        return "/client/home";
     }
 
 
@@ -30,7 +30,7 @@ public class ClientController {
     public String editClient(@PathVariable Long id, Model model) {
         Client client = clientService.getClientById(id);
         model.addAttribute("client", client);
-        return "client/form";
+        return "/client/form";
     }
 
     @GetMapping("/{id}/delete")

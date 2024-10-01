@@ -1,6 +1,5 @@
 package com.principal.alomaster.config;
 
-import com.principal.alomaster.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.principal.alomaster.services.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -36,7 +37,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**", "/home").permitAll()
+                .requestMatchers("/auth/**", "/home", "/registerWorker/**").permitAll()
                 .requestMatchers("/client/**").hasAuthority("CLIENT")
                 .requestMatchers("/worker/**").hasAuthority("WORKER")
                 .requestMatchers("/guest").hasAuthority("GUEST")

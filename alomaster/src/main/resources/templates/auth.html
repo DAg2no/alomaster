@@ -41,7 +41,6 @@
 
             <div class="derecha">
                 <h2>Registro</h2>
-                <!-- Formulario de registro usando Thymeleaf -->
                 <form th:action="@{/auth/register-client}" th:object="${client}" method="post">
                     <label for="nombreCompleto">Nombre Completo:</label>
                     <input type="text" th:field="*{nombreCompleto}" placeholder="Nombre Completo">

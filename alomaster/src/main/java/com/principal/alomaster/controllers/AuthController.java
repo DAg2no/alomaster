@@ -1,20 +1,30 @@
 package com.principal.alomaster.controllers;
 
-import com.principal.alomaster.enums.Role;
-import com.principal.alomaster.models.Client;
-import com.principal.alomaster.models.User;
-import com.principal.alomaster.models.Worker;
-import com.principal.alomaster.repositories.UserRepository;
-import com.principal.alomaster.services.AuthService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.principal.alomaster.enums.Role;
+import com.principal.alomaster.models.Client;
+import com.principal.alomaster.models.Worker;
+import com.principal.alomaster.repositories.UserRepository;
+import com.principal.alomaster.services.AuthService;
+
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Controller
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -54,13 +64,13 @@ public class AuthController {
         if (!client.getPassword().equals(client.getPasswordConfirm())) {
             bindingResult.rejectValue("passwordConfirm", "error.client", "Las contraseñas no coinciden");
         }
-        System.out.println("antes de errores");
+        
         if (bindingResult.hasErrors()) {
-            System.out.println("dentro de errores");
+           
             System.out.println(bindingResult.getAllErrors());
             return REGISTER_CLIENT_VIEW;
         }
-        System.out.println("antes del register");
+        
         client.setRole(Role.CLIENT);
         authService.registerUser(client);
 

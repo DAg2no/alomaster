@@ -1,14 +1,15 @@
 package com.principal.alomaster.controllers;
 
-import ch.qos.logback.core.model.Model;
-import com.principal.alomaster.enums.Role;
-import com.principal.alomaster.models.User;
-import com.principal.alomaster.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.principal.alomaster.enums.Role;
+import com.principal.alomaster.models.User;
+import com.principal.alomaster.repositories.UserRepository;
+
+import ch.qos.logback.core.model.Model;
 
 
 @Controller
@@ -34,7 +35,6 @@ public class HomeController {
         return "redirect:/auth/login";
     }
 
-    @Autowired
     public HomeController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

@@ -1,6 +1,8 @@
 package com.principal.alomaster.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,20 +43,38 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    
     @GetMapping("/login")
     public String showLoginForm(Model model) {
+        
+        System.out.print("auth: " + auth);
+    if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
+        return "redirect:/home";
+    }
+
         model.addAttribute("client", new Client());
         return LOGIN_VIEW;
     }
 
     @GetMapping("/register-worker")
     public String showRegistrationFormWorker(Model model) {
+
+        if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/home";
+        }
+    
         model.addAttribute("worker", new Worker());
         return REGISTER_WORKER_VIEW;
     }
 
     @GetMapping("/register-guest")
     public String registerGuest() {
+
+        if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/home";
+        }
+    
         return "redirect:/guest";
     }
 
@@ -76,18 +96,26 @@ public class AuthController {
 
         return "redirect:/auth/login";
     }
-
+    
     @PostMapping("/register-worker")
     public String registerWorker(@Valid @ModelAttribute("worker") Worker worker, BindingResult bindingResult) {
-        if (!worker.getPassword().equals(worker.getPasswordConfirm())) {
-            bindingResult.rejectValue("passwordConfirm", "error.worker", "Las contraseñas no coinciden");
-        }
-        System.out.println("antes de errores del worker");
-        if (bindingResult.hasErrors()) {
-            System.out.println("dentro de errores del worker");
-            System.out.println(bindingResult.hasErrors());
+        // Verificar si la contraseña o la confirmación son nulas o vacías
+        if (worker.getPassword() == null || worker.getPassword().isEmpty() ||
+            worker.getPasswordConfirm() == null || worker.getPasswordConfirm().isEmpty()) {
+            bindingResult.rejectValue("password", "error.worker", "La contraseña y la confirmación son obligatorias");
             return REGISTER_WORKER_VIEW;
         }
+        
+        // Comparar las contraseñas
+        if (!worker.getPassword().equals(worker.getPasswordConfirm())) {
+            bindingResult.rejectValue("passwordConfirm", "error.worker", "Las contraseñas no coinciden");
+            return REGISTER_WORKER_VIEW;
+        }
+        
+        if (bindingResult.hasErrors()) {
+            return REGISTER_WORKER_VIEW;
+        }
+        
         worker.setRole(Role.WORKER);
         authService.registerUser(worker);
         return "redirect:/auth/login";

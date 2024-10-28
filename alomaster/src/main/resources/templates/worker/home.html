@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Thymeleaf Example</title>
-    </head>
-    <body>
-        <h1 th:text="${welcomeMessage}">Welcome to Thymeleaf</h1>
-        <ul>
-            <li th:each="item : ${items}" th:text="${item}">Item</li>
-        </ul>
-    </body>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlóMaster HOME</title>
+    <link rel="stylesheet" th:href="@{/worker/css/home.css}">
+</head>
+<body>
+    <header th:fragment="header">
+        <img th:src="@{/logo.png}" alt="logo">
+        <nav>
+            <a th:href="@{/perfil}">Perfil</a>
+            <a th:href="@{/favoritos}">Favoritos</a>
+            <a th:href="@{/auth/logout}">Cerrar Sesión</a>
+        </nav>
+    </header>
+    <div class="info">
+        <div class="search">
+            <h2> Búsqueda</h2>
+            <input type="text" placeholder="buscar" th:value="${searchQuery}">
+        </div>
+        <section class="info-section">
+            <button>Región</button>
+            <button>Comuna</button>
+        </section>
+        <div>
+            <button>Buscar</button>
+        </div>
+    </div>
+    <section class="section-contact">
+        <a th:href="@{/contacto}">contacto</a>
+        <a th:href="@{/soporte}">soporte</a>
+    </section>
+
+    <footer>
+        <p> AlóMaster todos los derechos reservados</p>
+    </footer>
+</body>
 </html>

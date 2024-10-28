@@ -13,6 +13,19 @@ header {
     align-items: center;
     padding: 10px;
 }
+h2{padding: 0;
+    margin: 5px;
+}
+h3{
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+p{
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 img {
     display: flex;
@@ -45,18 +58,33 @@ header nav a {
     margin-left: 20px;
 }
 
-form {
+
+.izquierda form {
     background-color: #fff;
-    padding: 20px;
+    padding: 5px;
+    gap: 5px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.derecha form {
+    background-color: #fff;
+    padding: 5px;
+    gap: 5px;
+    border-radius: 10px;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
-
+.izquierda input{
+    width: 80vh;
+}
+.derecha input{
+    width: 50vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 input[type="file"] {
     margin-bottom: 20px;
 }
@@ -124,24 +152,7 @@ h2 {
     box-shadow: 6px 6px 22px 0px rgba(117, 117, 117, 1);
 }
 
-.login {
-    display: flex;
-    flex-direction: column;
-    width: 180px;
-    color: #485861;
-    box-shadow: white 2px 2px 0px 10px;
-    border-radius: 2px;
-    padding: 10px;
-    margin-bottom: 50px;
-    margin-top: 10px;
-}
 
-.logOn {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
-    font-weight: bolder;
-    color: #485861;
-}
 
 #boton1 {
     border: none;
@@ -164,7 +175,7 @@ h2 {
     color: #485861;
     border-radius: 10px;
     padding: 10px;
- font-weight: bolder;
+    font-weight: bolder;
     margin-right: 50px;
     background-color: #fff;
     -webkit-box-shadow: 1px 3px 10px 0px rgba(117, 117, 117, 1);

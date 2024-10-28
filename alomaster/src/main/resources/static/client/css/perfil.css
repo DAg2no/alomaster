@@ -1,0 +1,256 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #426DC2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+img {
+    display: flex;
+    flex-direction: row;
+    height: 5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 600px;
+}
+
+header nav {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: right;
+
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.profile-section {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    color: #485861;
+    font-weight: bold;
+
+}
+
+.profile-card {
+    background-color: #BBE2F2;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.photo {
+    background-color: #F2F2F2;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    line-height: 100px;
+    text-align: center;
+}
+
+.proyect-photo {
+    background-color: #F2F2F2;
+    width: 150px;
+    height: 100px;
+    padding-top: 20px;
+    margin: 0 auto;
+    border-radius: 10%;
+    line-height: 30px;
+
+    text-align: center;
+}
+
+.section-profile {
+    display: flex;
+}
+
+.alias {
+    margin-top: 20px;
+    text-decoration: underline;
+    font-size: large;
+    margin-right: 10px;
+
+}
+
+.job {
+    font-size: 18px;
+    color: #485861;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.rating {
+    margin-top: 20px;
+    background-color: #F2F2F2;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    font-size: 32px;
+}
+
+.reviews {
+    margin-top: 10px;
+    padding: 10px;
+    color: #555;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    height: 100px;
+
+}
+
+.details-section {
+    width: 850px;
+}
+
+.opinions {
+    background-color: #BBE2F2;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.info {
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100px;
+    width: 250px;
+
+}
+
+.section-contact {
+    background-color: #97dbff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.section-contact a {
+    font-size: 1em;
+    margin: 0 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+
+}
+
+a:hover {
+    text-decoration: underline;
+    color: white;
+
+}
+
+.rights {
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #busqueda {
+        width: 200px;
+        flex-wrap: wrap;
+    }
+
+    .menu {
+        flex-direction: column;
+    }
+
+    .derecha {
+        margin-left: 50px;
+    }
+
+    .izquierda {
+        margin: 20px 50px 10px 30px;
+        width: auto;
+    }
+
+    .login {
+        display: flex;
+        width: auto;
+
+
+    }
+
+    input[type="text"] {
+        padding: 5px;
+        border: none;
+        border-radius: 10px;
+        width: 60vw;
+    }
+
+    .profile-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-card {
+        background-color: #BBE2F2;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        text-align: center;
+        border: solid 2px;
+
+    }
+
+}

@@ -1,28 +1,32 @@
 package com.principal.alomaster.controllers;
 
-import com.principal.alomaster.models.Worker;
-import com.principal.alomaster.services.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import com.principal.alomaster.models.Worker;
+import com.principal.alomaster.services.WorkerService;
+
+
 
 @Controller
 @RequestMapping("/worker/home")
 public class WorkerController {
+
+    private static final String HOME_VIEW = "worker/home";
+    private static final String FORM_VIEW = "worker/form";
+
+
     @Autowired
     private WorkerService workerService;
 
 
     @GetMapping
     public String homePage(Model model) {
-        return "worker/home";
+        return HOME_VIEW;
     }
 
 
@@ -30,7 +34,7 @@ public class WorkerController {
     public String editWorker(@PathVariable Long id, Model model) {
         Worker worker = workerService.getWorkerById(id);
         model.addAttribute("worker", worker);
-        return "worker/form";
+        return FORM_VIEW;
     }
 
     @GetMapping("/{id}/delete")

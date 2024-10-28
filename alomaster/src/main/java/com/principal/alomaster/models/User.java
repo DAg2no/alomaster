@@ -44,17 +44,15 @@ public class User implements UserDetails {
     @NotBlank(message = "Nombre completo es requerido")
     private String nombreCompleto;
 
-    private byte[] fotoActualizada;
 
-    @NotBlank(message = "RUT es requerido")
     @Column(unique = true)
-    private String rut;
+    private int rut;
 
     @NotBlank(message = "Dirección es requerida")
     private String direccion;
 
-    @NotBlank(message = "Número de teléfono es requerido")
-    private String numeroTelefono;
+    
+    private int numeroTelefono;
 
     @Email(message = "Correo electrónico no es válido")
     @NotBlank(message = "Correo electrónico es requerido")
@@ -67,6 +65,7 @@ public class User implements UserDetails {
     private String password;
 
     @Transient
+    @NotBlank(message = "Confirmación de contraseña es requerida")
     private String passwordConfirm;
 
 

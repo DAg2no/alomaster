@@ -1,0 +1,341 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+}
+
+
+header {
+    background-color: #426DC2;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+img {
+    display: flex;
+    flex-direction: row;
+    height: 5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 600px;
+}
+
+header nav {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: right;
+
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.profile-section {
+    display: flex;
+    
+    padding: 20px;
+    color: #485861;
+    font-weight: bold;
+    border: solid;
+
+}
+
+.profile-card {
+
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+
+    text-align: center;
+    box-shadow: white 2px 2px 0px 13px;
+
+    margin: 30px 20px 50px 20px; 
+    
+}
+.slick-slide{
+    width: 200px;
+}
+
+.photo {
+    background-color: #F2F2F2;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    line-height: 100px;
+}
+
+.section-profile {
+    display: flex;
+}
+
+.alias {
+    margin-top: 20px;
+    text-decoration: underline;
+    font-size: large;
+    margin-right: 10px;
+
+}
+
+.job {
+    font-size: 18px;
+    color: #485861;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.rating {
+    margin-top: 20px;
+    background-color: #F2F2F2;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    font-size: 32px;
+}
+
+.reviews {
+    margin-top: 10px;
+    padding: 10px;
+    color: #555;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    height: 100px;
+
+}
+
+
+
+.projects {
+    background-color: #BBE2F2;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100vw;
+}
+
+
+.carousel{
+
+    margin-left: 40px;
+ 
+}
+.carousel-item{
+    width: 20px;
+}
+
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    width: 200px;
+}
+
+
+.section-contact {
+    background-color: #97dbff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.section-contact a {
+    font-size: 1em;
+    margin: 0 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+
+}
+
+a:hover {
+    text-decoration: underline;
+    color: white;
+
+}
+
+.rights {
+    font-size: 12px;
+}
+
+main {
+    background-color: #94e4ff;
+    margin: 0px;
+    display: flex;
+
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+
+    main {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+    .projects{
+        display: flex;
+        flex-direction: column;
+        padding:  0px;
+
+    }
+
+    .busqueda {
+        width: 200px;
+        flex-wrap: wrap;
+    }
+    input[type="text"] {
+        padding: 5px;
+        border: none;
+        border-radius: 10px;
+        width: 200px;
+    }
+
+    .menu {
+        flex-direction: column;
+    }
+
+
+
+
+
+    .login {
+        display: flex;
+        width: auto;
+
+
+    }
+    .carousel{
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+    }
+
+}
+
+.carousel img {
+
+    padding: 20px;
+    border-radius: 10px;
+    width: 20px;
+    text-align: center;
+    box-shadow: white 2px 2px 0px 13px;
+    border: solid;
+}
+
+/* Estilos generales para los botones del carrusel */
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    /* Centrar verticalmente los botones */
+    transform: translateY(-50%);
+    /* Para ajustar el desplazamiento vertical */
+    background-color: #50a5ff;
+    /* Color de fondo del botón */
+    color: white;
+    /* Color del texto o ícono */
+    border-radius: 50%;
+    /* Hacer los botones redondos */
+    width: 50px;
+    /* Ancho del botón */
+    height: 50px;
+    /* Alto del botón */
+    z-index: 1000;
+    /* Asegurarse de que los botones estén encima del carrusel */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-color: white;
+    transition: background-color 0.3s ease;
+    /* Efecto de transición */
+}
+
+/* Botón previo a la izquierda del carrusel */
+.slick-prev {
+    left: -45px;
+    /* Posicionarlo a la izquierda del carrusel */
+}
+
+/* Botón siguiente a la derecha del carrusel */
+.slick-next {
+    left: 94%;
+    /* Posicionarlo a la derecha del carrusel */
+}
+
+/* Opcional: Cambiar el color cuando el ratón pase sobre los botones */
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: #97dbff;
+    /* Cambia color en hover */
+}
+
+/* Opcional: Aumentar el tamaño de los íconos de flecha de Slick */
+.slick-prev:before,
+.slick-next:before {
+    font-size: 25px;
+    /* Tamaño del ícono */
+    color: white;
+    /* Color de las flechas */
+}
+.draggable{
+    width:  90vw;
+    padding: 20px;
+    height: 500px;
+ 
+
+
+}
+
+.slick-slide{
+    display: flex;
+    width: 200px;
+
+}
+.slick-slide.current-slide{
+    width: 200px;
+}

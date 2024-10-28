@@ -31,7 +31,7 @@ public class HomeController {
                 return "redirect:/client/home";
             }
         }
-        // Si no ha iniciado sesión o no tiene rol, redirige a la página de inicio de sesión
+
         return "redirect:/auth/login";
     }
 
